@@ -82,5 +82,5 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 ################################################################################
 # Sub-projects
 ################################################################################
-add_subdirectory(UIExtension)
+add_subdirectory(src)
 
