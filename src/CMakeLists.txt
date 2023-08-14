@@ -27,6 +27,8 @@ set(ALL_FILES
     ${Sources}
 )
 
+
+
 ################################################################################
 # Target
 ################################################################################
@@ -37,7 +39,19 @@ add_library(${PROJECT_NAME} SHARED ${ALL_FILES})
 use_props(${PROJECT_NAME} "${CMAKE_CONFIGURATION_TYPES}" "${DEFAULT_CXX_PROPS}")
 
 
-#[=========================================[ 
+################################################################################
+# Setup pybind11
+################################################################################
+
+set(ENV{UIEXT_CONDA_ENV} "$ENV{USERPROFILE}\\miniconda3\\envs\\erlab")
+set(PYTHON_EXECUTABLE "$ENV{UIEXT_CONDA_ENV}\\python.exe")
+set(ENV{PYTHONPATH} "$ENV{UIEXT_CONDA_ENV}\\Lib\\site-packages")
+
+# target_compile_definitions(${PROJECT_NAME} PRIVATE -DCUSTOM_SYS_PATH="\"$ENV{HOME}/miniconda3/envs/erlab/Lib/site-packages\"")
+add_subdirectory(pybind11)
+target_link_libraries(${PROJECT_NAME} PRIVATE pybind11::embed)
+
+
 if("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x64")
     set_target_properties(${PROJECT_NAME} PROPERTIES
         INTERPROCEDURAL_OPTIMIZATION_RELEASE "TRUE"
@@ -67,6 +81,7 @@ elseif("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x86")
     )
 endif()
 
+#[=========================================[ 
 ################################################################################
 # Compile and link options
 ################################################################################

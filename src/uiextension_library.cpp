@@ -3,6 +3,11 @@
 
 #include <Windows.h>
 
+#include <pybind11/embed.h>
+namespace py = pybind11;
+py::module sys = py::module::import("sys");
+// sys.attr("path").attr("insert")(1, CUSTOM_SYS_PATH);
+
 class UIExtension_Library_P
 {
 public:
