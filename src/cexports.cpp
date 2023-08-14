@@ -3,7 +3,7 @@
 #include <Windows.h>
 
 namespace
-{ 
+{
   static UIExtension_Library gMono;
 }
 
@@ -24,8 +24,8 @@ extern "C"
     return gMono.getLibInfo();
   }
 
-  const char* __stdcall GDS_UI_GetSpectrumInfo()
+  const char *__stdcall GDS_UI_GetSpectrumInfo()
   {
-      return gMono.getSpectrumInfo();
+    return gMono.getSpectrumInfo();
   }
 }

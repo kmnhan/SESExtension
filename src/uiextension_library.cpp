@@ -6,7 +6,6 @@
 class UIExtension_Library_P
 {
 public:
-
   UIExtension_Library_P()
   {
     sesBaseDir_ = sc::system::getenv("SES_BASE_DIR");
@@ -28,16 +27,15 @@ public:
   {
   }
 
-  char* getLibInfo()
+  char *getLibInfo()
   {
     return "UIExtension_Library 1.0.0-beta.1";
   }
 
-  char* getSpectrumInfo()
+  char *getSpectrumInfo()
   {
-      return "Test Spectrum Info=12345\nanother Spectrum Info=this is a string\nthe last one=hmm";
+    return "Test Spectrum Info=12345\nanother Spectrum Info=this is a string\nthe last one=hmm";
   }
-
 
 private:
   HWND mainWindow_ = nullptr;
@@ -45,7 +43,7 @@ private:
 };
 
 UIExtension_Library::UIExtension_Library()
-  : p_(new UIExtension_Library_P)
+    : p_(new UIExtension_Library_P)
 {
 }
 
@@ -53,7 +51,7 @@ UIExtension_Library::~UIExtension_Library()
 {
 }
 
-int UIExtension_Library::initialize(void* mainWindow)
+int UIExtension_Library::initialize(void *mainWindow)
 {
   return p_->initialize((HWND)mainWindow);
 }
@@ -63,12 +61,12 @@ void UIExtension_Library::finalize()
   p_->finalize();
 }
 
-char * UIExtension_Library::getLibInfo()
+char *UIExtension_Library::getLibInfo()
 {
   return p_->getLibInfo();
 }
 
-char* UIExtension_Library::getSpectrumInfo()
+char *UIExtension_Library::getSpectrumInfo()
 {
-    return p_->getSpectrumInfo();
+  return p_->getSpectrumInfo();
 }
