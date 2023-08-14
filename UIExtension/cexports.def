@@ -1,0 +1,7 @@
+LIBRARY UIExtension_Library
+
+EXPORTS
+GDS_UI_Initialize
+GDS_UI_Finalize
+GDS_UI_GetLibInfo
+GDS_UI_GetSpectrumInfo
