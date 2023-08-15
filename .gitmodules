@@ -1,4 +1,3 @@
-[submodule "src/pybind11"]
-	path = src/pybind11
-	url = ../../pybind/pybind11
-	branch = stable
+[submodule "src/cppzmq"]
+	path = src/cppzmq
+	url = https://github.com/zeromq/cppzmq.git
