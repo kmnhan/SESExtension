@@ -261,8 +261,9 @@ cython_debug/
 .ninja_deps
 .ninja_log
 .vscode/*
-!.vscode/tasks.json
+# !.vscode/tasks.json
 !.vscode/launch.json
+vc140.pdb
 
 # Local History for Visual Studio Code
 .history/
