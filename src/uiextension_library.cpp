@@ -1,12 +1,10 @@
 #include "uiextension_library.h"
 #include "environment.h"
+#include "clients.h"
 
 #include <Windows.h>
-
-#include <pybind11/embed.h>
-namespace py = pybind11;
-py::module sys = py::module::import("sys");
-// sys.attr("path").attr("insert")(1, CUSTOM_SYS_PATH);
+#include <iostream>
+#include <string>
 
 class UIExtension_Library_P
 {
@@ -34,12 +32,21 @@ public:
 
   char *getLibInfo()
   {
-    return "UIExtension_Library 1.0.0-beta.1";
+    std::string out = "UIExtension_Library 1.0.0";
+    char *cstr = new char[out.length() + 1];
+    strcpy(cstr, out.c_str());
+    return cstr;
   }
 
   char *getSpectrumInfo()
   {
-    return "Test Spectrum Info=12345\nanother Spectrum Info=this is a string\nthe last one=hmm";
+    std::string specInfo = "";
+    specInfo += slit_client::info();
+    specInfo += cryo_client::info();
+    specInfo += mg15_client::info();
+    char *cstr = new char[specInfo.length() + 1];
+    strcpy(cstr, specInfo.c_str());
+    return cstr;
   }
 
 private:
@@ -47,14 +54,8 @@ private:
   std::string sesBaseDir_;
 };
 
-UIExtension_Library::UIExtension_Library()
-    : p_(new UIExtension_Library_P)
-{
-}
-
-UIExtension_Library::~UIExtension_Library()
-{
-}
+UIExtension_Library::UIExtension_Library() : p_(new UIExtension_Library_P) {}
+UIExtension_Library::~UIExtension_Library() {}
 
 int UIExtension_Library::initialize(void *mainWindow)
 {
