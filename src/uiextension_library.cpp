@@ -32,7 +32,7 @@ public:
 
   char *getLibInfo()
   {
-    std::string out = "UIExtension_Library 1.0.0";
+    std::string out = "UIExtension_Library 2.0.0";
     char *cstr = new char[out.length() + 1];
     strcpy(cstr, out.c_str());
     return cstr;
@@ -41,9 +41,7 @@ public:
   char *getSpectrumInfo()
   {
     std::string specInfo = "";
-    specInfo += slit_client::info();
-    specInfo += cryo_client::info();
-    specInfo += mg15_client::info();
+    specInfo += attrs_client::info();
     char *cstr = new char[specInfo.length() + 1];
     strcpy(cstr, specInfo.c_str());
     return cstr;
