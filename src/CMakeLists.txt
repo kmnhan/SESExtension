@@ -46,7 +46,7 @@ find_package(cppzmq REQUIRED)
 add_library(${PROJECT_NAME} SHARED ${ALL_FILES})
 target_link_libraries(${PROJECT_NAME} cppzmq)
 
-# zmqclient: for test purposes 
+# zmqclient is for test purposes 
 
 # add_executable(zmqclient zmqclient.cpp)
 # target_link_libraries(zmqclient cppzmq)
