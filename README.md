@@ -2,7 +2,7 @@
 
 Custom user interface to SES.
 
-This library only provides the bare minimum for writing custom header entries to data saved by SES. See `cexports.def`. On calling `GDS_UI_GetSpectrumInfo`, the library attempts connection to a zmq server of socket type `REP` with a hardcoded port number and gets the header entries as a string. If the server is not running or has become unresponsive, SES will hang on saving data. The zmq client is implemented in `clients.h`. Most of the code in this library has been adapted from the monochromator and manipulator library examples provided by Scienta Omicron.
+This library only provides the bare minimum for writing custom header entries to data saved by SES. See `cexports.def`. On calling `GDS_UI_GetSpectrumInfo`, the library attempts connection to a zmq server of socket type `PUB` with port number `5556` that keeps publishing header entry strings. If the server is not running or has become unresponsive, SES will hang on saving data. The zmq client is implemented in `clients.h`. Most of the code in this library has been adapted from the monochromator and manipulator library examples provided by Scienta Omicron.
 
 ## Disclaimer
 
@@ -41,4 +41,4 @@ Build with an appropriate compiler that matches the operating system of the data
 
 ### Installing
 
-Setup according to the SES documentation. Note that the `.dll` file for the `libzmq` library (generated on build) must be in the same directory with `UIExtension_Library.dll`.
+Setup according to the SES documentation. Note that the `.dll` file for the `libzmq` library (generated on build) must be in the same directory with `UIExtension_Library.dll`. For the library to function, it must be built in Release configuration.
